@@ -5,6 +5,7 @@ namespace app {
     public static $inject: string[] = [
       'ionic',
     ];
-    public static context: ng.IModule = angular.module('app', Application.$inject);
+    private static __context: ng.IModule = angular.module('app', Application.$inject);
+    public static get context(): ng.IModule { return Application.__context; }
   }
 }

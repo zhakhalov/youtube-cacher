@@ -16,7 +16,7 @@ namespace app {
     /**
      * Define Cordova plugins configuration
      */
-    configCordova() {
+    private configCordova() {
       if (window.cordova && (window.cordova.plugins as any).Keyboard) {
         (window.cordova.plugins as any).Keyboard.hideKeyboardAccessoryBar(true);
         (window.cordova.plugins as any).Keyboard.disableScroll(true);
