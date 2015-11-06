@@ -4,10 +4,15 @@ var app;
     var Application = (function () {
         function Application() {
         }
+        Object.defineProperty(Application, "context", {
+            get: function () { return Application.__context; },
+            enumerable: true,
+            configurable: true
+        });
         Application.$inject = [
             'ionic',
         ];
-        Application.context = angular.module('app', Application.$inject);
+        Application.__context = angular.module('app', Application.$inject);
         return Application;
     })();
     app.Application = Application;
@@ -135,7 +140,9 @@ var app;
         ];
         return RouteConfig;
     })();
+    app.RouteConfig = RouteConfig;
 })(app || (app = {}));
+app.Application.context.config(app.RouteConfig);
 /// <reference path="app.ts" />
 var app;
 (function (app) {
@@ -160,4 +167,5 @@ var app;
     })();
     app.Startup = Startup;
 })(app || (app = {}));
+app.Application.context.run(app.Startup);
 //# sourceMappingURL=app.js.map

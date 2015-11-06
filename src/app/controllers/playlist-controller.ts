@@ -1,7 +1,7 @@
 /// <reference path="../app.ts" />
 namespace app.controllers {
   
-  interface IPlaylistScope {
+  interface IPlaylistScope extends angular.IScope {
     
   }  
   

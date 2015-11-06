@@ -1,7 +1,7 @@
 /// <reference path="../app.ts" />
 namespace app.controllers {
   
-  interface IAppScope {
+  interface IAppScope extends angular.IScope {
     
   }  
   
@@ -14,12 +14,12 @@ namespace app.controllers {
     
     $scope:IAppScope;
     $ionModal: ionic.modal.IonicModalService;
-    $timeout: ng.ITimeoutService;
+    $timeout: angular.ITimeoutService;
     
     constructor(
       $scope:IAppScope,
       $ionModal: ionic.modal.IonicModalService,
-      $timeout: ng.ITimeoutService
+      $timeout: angular.ITimeoutService
     ) {
       this.$scope = $scope;
       this.$ionModal = $ionModal;

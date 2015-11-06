@@ -28,3 +28,5 @@ namespace app {
     }
   }
 }
+
+app.Application.context.run(app.Startup);

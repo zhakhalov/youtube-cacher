@@ -4,16 +4,16 @@
 /// <reference path="controllers/playlists-controller.ts" />
 
 namespace app {
-  class RouteConfig {
+  export class RouteConfig {
     public static $inject: string[] = [
       '$stateProvider',
       '$urlRouterProvider'
     ];
     
-    $stateProvider: ng.ui.IStateProvider;
-    $urlRouterProvider: ng.ui.IUrlRouterProvider 
+    $stateProvider: angular.ui.IStateProvider;
+    $urlRouterProvider: angular.ui.IUrlRouterProvider 
     
-    constructor($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) {
+    constructor($stateProvider: angular.ui.IStateProvider, $urlRouterProvider: angular.ui.IUrlRouterProvider) {
       this.$stateProvider = $stateProvider;
       this.$urlRouterProvider = $urlRouterProvider;
       
@@ -74,3 +74,5 @@ namespace app {
     }
   }
 }
+
+app.Application.context.config(app.RouteConfig);
