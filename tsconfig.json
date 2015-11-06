@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "target": "ES5",
+        "rootDir": ".",
+        "sourceMap": true,
+        "outDir": ".bin/www",
+        "outFile": "./dest/js/app.js",
+        "sourceRoot": ".",
+        "watch": true
+    },
+    "filesGlob": [
+        "src/app/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
