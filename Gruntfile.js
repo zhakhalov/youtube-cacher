@@ -2,7 +2,21 @@ var grunt = require('grunt');
 var path = require('path');
 
 grunt.initConfig({
-  
+  //-----------------------------------------------------------------------------------------------
+  //                                                                                           copy
+  //-----------------------------------------------------------------------------------------------
+  copy: {
+    src: {
+      files: [{
+        expand: true, 
+        src: ['src/app/**'], 
+        dest: 'www/'
+      }]
+    }
+  },
+  //-----------------------------------------------------------------------------------------------
+  //                                                                                         concat
+  //-----------------------------------------------------------------------------------------------
   concat: {
     /**
     * Concatenate 3-rd party libs
@@ -12,7 +26,26 @@ grunt.initConfig({
       dest: 'www/js/vendor.js'
     },
   },
+  //-----------------------------------------------------------------------------------------------
+  //                                                                                           sass
+  //-----------------------------------------------------------------------------------------------
+  sass: {
+    dev: {
+      options: {
+        sourcemap: true
+      },
+      files: {
+        'www/css/ionic.app.css': 'src/stylesheets/scss/ionic.app.scss'
+      }
+    }
+  },
+  //-----------------------------------------------------------------------------------------------
+  //                                                                                           less
+  //-----------------------------------------------------------------------------------------------
   less: {
+    dist: {
+     
+    },
     /**
      * Complile development version of less styles
      */
@@ -22,21 +55,27 @@ grunt.initConfig({
         sourceMap: true,
         sourceMapBasepath: '.',
         sourceMapRootpath: '/',
-        sourceMapURL: '/www/css/styles.css.map'
+        sourceMapURL: '/css/styles.css.map'
       },
       files: {
         'www/css/styles.css': 'src/stylesheets/less/styles.less'
       }
     }
   },
+  //-----------------------------------------------------------------------------------------------
+  //                                                                                           jade
+  //-----------------------------------------------------------------------------------------------
   jade: {
-    options: {
-      pretty: true,
-    },
     /**
-     * Compile views
+     * Compile pretty printed views
      */
-    default: {
+    dist: {
+     
+    },
+    dev: {
+      options: {
+        pretty: true,
+      },
       files: [{
         expand: true,
         src: '**/*.jade',
@@ -46,24 +85,15 @@ grunt.initConfig({
       }]
     }
   },
-  watch: {
-    less: {
-      files: 'src/stylesheets/less/**/*.less',
-      tasks: ['less:dest']
-    },
-    jade: {
-      files: 'src/views/**/*.jade',
-      tasks: ['jade']
-    }
-  },
+  //-----------------------------------------------------------------------------------------------
+  //                                                                                             ts
+  //-----------------------------------------------------------------------------------------------
   ts: {
     options: {
       compiler: './node_modules/typescript/bin/tsc'
     },
-    default: {
-      tsconfig: {
-        passThrough: true,
-      }
+    dist: {
+     
     },
     dev: {
       tsconfig: {
@@ -71,10 +101,30 @@ grunt.initConfig({
       }
     }
   },
+  //-----------------------------------------------------------------------------------------------
+  //                                                                                          watch
+  //-----------------------------------------------------------------------------------------------
+  watch: {
+    less: {
+      files: 'src/stylesheets/less/**/*.less',
+      tasks: ['less:dev']
+    },
+    jade: {
+      files: 'src/views/**/*.jade',
+      tasks: ['jade:dev']
+    },
+    src: {
+      files: 'src/app/**/*.ts',
+      tasks: ['copy:src', 'ts:dev']
+    }
+  },
+  //-----------------------------------------------------------------------------------------------
+  //                                                                                      concurent
+  //-----------------------------------------------------------------------------------------------
   concurrent: {
     dev: {
       logConcurrentOutput: true,
-      tasks: ['watch:less', 'watch:jade', 'ts:dev'],
+      tasks: ['watch:less', 'watch:jade', 'watch:src'],
     },
   }
 });
@@ -84,6 +134,8 @@ grunt.loadNpmTasks('grunt-contrib-concat');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-less');
 grunt.loadNpmTasks('grunt-contrib-jade');
+grunt.loadNpmTasks('grunt-contrib-sass');
+grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-concurrent');
 
 /**

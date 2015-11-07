@@ -9,14 +9,15 @@
         "sourceMap": true,
         "outDir": ".bin/www",
         "outFile": "./www/app/app.js",
-        "sourceRoot": ".",
-        "watch": true
+        "sourceRoot": "/src/app/"
     },
     "filesGlob": [
-        "src/app/**/*.ts"
+        "./www/src/app/**/*.ts",
+        "./typings/tsd.d.ts"
     ],
     "exclude": [
         "node_modules",
-        "www/lib"
+        "www/lib",
+        "www/src"
     ]
 }

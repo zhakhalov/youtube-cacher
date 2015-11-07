@@ -1,35 +1,26 @@
-/// <reference path="app.ts" />
-/// <reference path="controllers/application-controller.ts" />
-/// <reference path="controllers/playlist-controller.ts" />
-/// <reference path="controllers/playlists-controller.ts" />
+/// <reference path="../app.ts" />
+/// <reference path="../controllers/app-controller.ts" />
+/// <reference path="../controllers/playlist-controller.ts" />
+/// <reference path="../controllers/playlists-controller.ts" />
 
-namespace app {
+namespace app.config {
   export class RouteConfig {
     public static $inject: string[] = [
       '$stateProvider',
       '$urlRouterProvider'
     ];
     
-    $stateProvider: angular.ui.IStateProvider;
-    $urlRouterProvider: angular.ui.IUrlRouterProvider 
-    
-    constructor($stateProvider: angular.ui.IStateProvider, $urlRouterProvider: angular.ui.IUrlRouterProvider) {
-      this.$stateProvider = $stateProvider;
-      this.$urlRouterProvider = $urlRouterProvider;
+    constructor(
+      $stateProvider: ng.ui.IStateProvider,
+      $urlRouterProvider: ng.ui.IUrlRouterProvider
+    ) {
       
-      this.configRoutes();
-    }
-    
-    /**
-     * Define route configurations.
-     */
-    private configRoutes() {
-      this.$stateProvider
+      $stateProvider
       .state('app', {
         url: '/app',
         abstract: true,
         templateUrl: 'templates/menu.html',
-        controller: app.controllers.ApplicationController,
+        controller: app.controllers.AppController,
         controllerAs: 'ctrl'
       })    
       .state('app.search', {
@@ -70,9 +61,9 @@ namespace app {
       });
       
       // if none of the above states are matched, use this as the fallback
-      this.$urlRouterProvider.otherwise('/app/playlists');
+      $urlRouterProvider.otherwise('/app/playlists');
     }
   }
 }
 
-app.Application.context.config(app.RouteConfig);
+app.Application.context.config(app.config.RouteConfig);

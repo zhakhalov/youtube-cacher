@@ -1,8 +1,8 @@
 /// <reference path="../app.ts" />
 namespace app.controllers {
   
-  interface IPlaylistsScope extends angular.IScope {
-    
+  interface PlaylistsScope extends angular.IScope {
+    playlists: models.PlaylistModel[];
   }  
   
   export class PlaylistsController {
@@ -10,12 +10,21 @@ namespace app.controllers {
       '$scope',
     ];
     
-    $scope:IPlaylistsScope;
+    $scope:PlaylistsScope;
     
     constructor(
-      $scope:IPlaylistsScope
+      $scope:PlaylistsScope
     ) {
       this.$scope = $scope;
+      
+      this.$scope.playlists = [
+        { title: 'Reggae', id: 1 },
+        { title: 'Chill', id: 2 },
+        { title: 'Dubstep', id: 3 },
+        { title: 'Indie', id: 4 },
+        { title: 'Rap', id: 5 },
+        { title: 'Cowbell', id: 6 }
+      ];
     }
   }
 }

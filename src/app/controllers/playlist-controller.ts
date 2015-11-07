@@ -1,8 +1,10 @@
 /// <reference path="../app.ts" />
+/// <reference path="../models/playlist-model.ts" />
+
 namespace app.controllers {
   
   interface IPlaylistScope extends angular.IScope {
-    
+    playlist: models.PlaylistModel;
   }  
   
   export class PlaylistController {
