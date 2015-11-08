@@ -10,8 +10,6 @@ var app;
         });
         Application.$inject = [
             'ionic',
-            'ionic-material',
-            'ionMdInput',
         ];
         Application.__context = angular.module('app', Application.$inject);
         return Application;
