@@ -6,6 +6,7 @@
     "ngstorage": "~0.3.9"
   },
   "dependencies": {
+    "angular-material": "~0.11.4",
     "ionic-material": "~0.4.2"
   }
 }
