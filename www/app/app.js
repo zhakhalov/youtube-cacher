@@ -210,4 +210,22 @@ var app;
     })(config = app.config || (app.config = {}));
 })(app || (app = {}));
 app.Application.context.config(app.config.RouteConfig);
+/// <reference path="../app.ts" />
+var app;
+(function (app) {
+    var controllers;
+    (function (controllers) {
+        var HomeController = (function () {
+            function HomeController($scope) {
+                this.$scope = $scope;
+            }
+            HomeController.$inject = [
+                '$scope',
+            ];
+            return HomeController;
+        })();
+        controllers.HomeController = HomeController;
+    })(controllers = app.controllers || (app.controllers = {}));
+})(app || (app = {}));
+app.Application.context.controller('app.controllers.HomeController', app.controllers.HomeController);
 //# sourceMappingURL=app.js.map
