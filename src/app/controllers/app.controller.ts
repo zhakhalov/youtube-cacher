@@ -1,5 +1,5 @@
 /// <reference path="../app.ts" />
-/// <reference path="../models/login-model.ts" />
+/// <reference path="../models/login.model.ts" />
 
 namespace app.controllers {
 

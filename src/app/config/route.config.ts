@@ -1,7 +1,8 @@
 /// <reference path="../app.ts" />
-/// <reference path="../controllers/app-controller.ts" />
-/// <reference path="../controllers/playlist-controller.ts" />
-/// <reference path="../controllers/playlists-controller.ts" />
+/// <reference path="../controllers/app.controller.ts" />
+/// <reference path="../controllers/home.controller.ts" />
+/// <reference path="../controllers/playlist.controller.ts" />
+/// <reference path="../controllers/playlists.controller.ts" />
 
 namespace app.config {
   export class RouteConfig {
@@ -58,10 +59,20 @@ namespace app.config {
             controllerAs: 'ctrl'
           }
         }
+      })
+      .state('app.home', {
+        url: '/home',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/playlist.html',
+            controller: app.controllers.PlaylistController,
+            controllerAs: 'ctrl'
+          }
+        }
       });
       
       // if none of the above states are matched, use this as the fallback
-      $urlRouterProvider.otherwise('/app/playlists');
+      $urlRouterProvider.otherwise('/app/home');
     }
   }
 }

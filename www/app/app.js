@@ -20,7 +20,7 @@ var app;
 var app;
 (function (app) {
     var Startup = (function () {
-        function Startup($ionicPlatform) {
+        function Startup($ionicPlatform, $ionicHistory) {
             this.$ionicPlatform = $ionicPlatform;
             this.$ionicPlatform.ready(this.configCordova);
         }
@@ -41,6 +41,25 @@ var app;
     app.Startup = Startup;
 })(app || (app = {}));
 app.Application.context.run(app.Startup);
+/// <reference path="../app.ts" />
+var app;
+(function (app) {
+    var config;
+    (function (config) {
+        var IonicConfig = (function () {
+            function IonicConfig($ionicConfigProvider) {
+                $ionicConfigProvider.backButton.previousTitleText(false);
+                $ionicConfigProvider.backButton.text('');
+            }
+            IonicConfig.$inject = [
+                '$ionicConfigProvider'
+            ];
+            return IonicConfig;
+        })();
+        config.IonicConfig = IonicConfig;
+    })(config = app.config || (app.config = {}));
+})(app || (app = {}));
+app.Application.context.config(app.config.IonicConfig);
 var app;
 (function (app) {
     var config;
@@ -60,7 +79,7 @@ var app;
     })(config = app.config || (app.config = {}));
 })(app || (app = {}));
 /// <reference path="../app.ts" />
-/// <reference path="../models/login-model.ts" />
+/// <reference path="../models/login.model.ts" />
 var app;
 (function (app) {
     var controllers;
@@ -100,7 +119,25 @@ var app;
 })(app || (app = {}));
 app.Application.context.controller('app.controllers.AppController', app.controllers.AppController);
 /// <reference path="../app.ts" />
-/// <reference path="../models/playlist-model.ts" />
+var app;
+(function (app) {
+    var controllers;
+    (function (controllers) {
+        var HomeController = (function () {
+            function HomeController($scope) {
+                this.$scope = $scope;
+            }
+            HomeController.$inject = [
+                '$scope',
+            ];
+            return HomeController;
+        })();
+        controllers.HomeController = HomeController;
+    })(controllers = app.controllers || (app.controllers = {}));
+})(app || (app = {}));
+app.Application.context.controller('app.controllers.HomeController', app.controllers.HomeController);
+/// <reference path="../app.ts" />
+/// <reference path="../models/playlist.model.ts" />
 var app;
 (function (app) {
     var controllers;
@@ -145,9 +182,10 @@ var app;
 })(app || (app = {}));
 app.Application.context.controller('app.controllers.PlaylistsController', app.controllers.PlaylistsController);
 /// <reference path="../app.ts" />
-/// <reference path="../controllers/app-controller.ts" />
-/// <reference path="../controllers/playlist-controller.ts" />
-/// <reference path="../controllers/playlists-controller.ts" />
+/// <reference path="../controllers/app.controller.ts" />
+/// <reference path="../controllers/home.controller.ts" />
+/// <reference path="../controllers/playlist.controller.ts" />
+/// <reference path="../controllers/playlists.controller.ts" />
 var app;
 (function (app) {
     var config;
@@ -197,8 +235,18 @@ var app;
                             controllerAs: 'ctrl'
                         }
                     }
+                })
+                    .state('app.home', {
+                    url: '/home',
+                    views: {
+                        'menuContent': {
+                            templateUrl: 'templates/playlist.html',
+                            controller: app.controllers.PlaylistController,
+                            controllerAs: 'ctrl'
+                        }
+                    }
                 });
-                $urlRouterProvider.otherwise('/app/playlists');
+                $urlRouterProvider.otherwise('/app/home');
             }
             RouteConfig.$inject = [
                 '$stateProvider',
@@ -210,22 +258,4 @@ var app;
     })(config = app.config || (app.config = {}));
 })(app || (app = {}));
 app.Application.context.config(app.config.RouteConfig);
-/// <reference path="../app.ts" />
-var app;
-(function (app) {
-    var controllers;
-    (function (controllers) {
-        var HomeController = (function () {
-            function HomeController($scope) {
-                this.$scope = $scope;
-            }
-            HomeController.$inject = [
-                '$scope',
-            ];
-            return HomeController;
-        })();
-        controllers.HomeController = HomeController;
-    })(controllers = app.controllers || (app.controllers = {}));
-})(app || (app = {}));
-app.Application.context.controller('app.controllers.HomeController', app.controllers.HomeController);
 //# sourceMappingURL=app.js.map

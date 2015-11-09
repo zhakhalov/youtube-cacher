@@ -1,5 +1,5 @@
 /// <reference path="../app.ts" />
-/// <reference path="../models/playlist-model.ts" />
+/// <reference path="../models/playlist.model.ts" />
 
 namespace app.controllers {
   

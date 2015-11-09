@@ -9,7 +9,8 @@ namespace app {
     $ionicPlatform: ionic.platform.IonicPlatformService;
     
     constructor (
-      $ionicPlatform: ionic.platform.IonicPlatformService
+      $ionicPlatform: ionic.platform.IonicPlatformService,
+      $ionicHistory: ionic.navigation.IonicHistoryService
     ) {
       this.$ionicPlatform = $ionicPlatform;
       this.$ionicPlatform.ready(this.configCordova);
