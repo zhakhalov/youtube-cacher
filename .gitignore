@@ -3,7 +3,10 @@
 
 node_modules/
 .tscache/
+.sass-cache/
 platforms/
 plugins/
 typings/
 www/lib/
+www/css/
+www/src/

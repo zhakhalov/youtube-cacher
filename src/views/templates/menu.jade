@@ -1,0 +1,19 @@
+ion-side-menus(enable-menu-with-back-views='false')
+  ion-side-menu-content
+    ion-nav-bar.bar-positive
+      ion-nav-back-button
+      ion-nav-buttons(side='left')
+        button.button.button-icon.button-clear.ion-navicon(menu-toggle='left')
+    ion-nav-view(name='menuContent')
+  ion-side-menu(side='left')
+    ion-header-bar.bar-positive
+    ion-content
+      ion-list
+        ion-item(menu-close='', ng-click='ctrl.openLoginModal()')
+          | Login
+        ion-item(menu-close='', ui-sref='app.search')
+          | Search
+        ion-item(menu-close='', ui-sref='app.browse')
+          | Browse
+        ion-item(menu-close='', ui-sref='app.playlists')
+          | Playlists

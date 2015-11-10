@@ -18,6 +18,7 @@ namespace app.controllers {
       this.$scope = $scope;
     }
   }
+  
+  Application.context.controller('app.controllers.PlaylistController', controllers.PlaylistController);
 }
 
-app.Application.context.controller('app.controllers.PlaylistController', app.controllers.PlaylistController);
