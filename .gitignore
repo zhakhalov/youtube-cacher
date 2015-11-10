@@ -10,3 +10,4 @@ typings/
 www/lib/
 www/css/
 www/src/
+**/*.tmp.txt
