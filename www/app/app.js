@@ -10,6 +10,7 @@ var app;
         });
         Application.$inject = [
             'ionic',
+            'ngMaterial',
         ];
         Application.__context = angular.module('app', Application.$inject);
         return Application;
@@ -20,7 +21,7 @@ var app;
 var app;
 (function (app) {
     var Startup = (function () {
-        function Startup($ionicPlatform, $ionicHistory) {
+        function Startup($ionicPlatform) {
             this.$ionicPlatform = $ionicPlatform;
             this.$ionicPlatform.ready(this.configCordova);
         }
@@ -67,8 +68,8 @@ var app;
         var MaterialDesignConfig = (function () {
             function MaterialDesignConfig($mdThemingProvider) {
                 $mdThemingProvider.theme('default')
-                    .primaryPalette('pink')
-                    .accentPalette('orange');
+                    .primaryPalette('teal')
+                    .accentPalette('blue-grey');
             }
             MaterialDesignConfig.$inject = [
                 '$mdThemingProvider'
@@ -78,6 +79,7 @@ var app;
         config.MaterialDesignConfig = MaterialDesignConfig;
     })(config = app.config || (app.config = {}));
 })(app || (app = {}));
+app.Application.context.config(app.config.MaterialDesignConfig);
 /// <reference path="../app.ts" />
 /// <reference path="../models/login.model.ts" />
 var app;
@@ -127,6 +129,12 @@ var app;
             function HomeController($scope) {
                 this.$scope = $scope;
             }
+            HomeController.prototype.click = function ($event) {
+                console.log($event);
+            };
+            HomeController.prototype.swipeLeft = function () {
+                console.log('swipe left');
+            };
             HomeController.$inject = [
                 '$scope',
             ];
@@ -239,14 +247,14 @@ var app;
                     .state('app.home', {
                     url: '/home',
                     views: {
-                        'menuContent': {
-                            templateUrl: 'templates/playlist.html',
-                            controller: app.controllers.PlaylistController,
+                        'content': {
+                            templateUrl: 'templates/home.html',
+                            controller: app.controllers.HomeController,
                             controllerAs: 'ctrl'
                         }
                     }
                 });
-                $urlRouterProvider.otherwise('/app/home');
+                $urlRouterProvider.otherwise('/app/playlists');
             }
             RouteConfig.$inject = [
                 '$stateProvider',

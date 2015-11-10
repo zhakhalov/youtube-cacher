@@ -9,7 +9,7 @@ grunt.initConfig({
     src: {
       files: [{
         expand: true, 
-        src: ['src/app/**'], 
+        src: ['src/app/**', 'src/stylesheets/less/**'], 
         dest: 'www/'
       }]
     }

@@ -63,16 +63,16 @@ namespace app.config {
       .state('app.home', {
         url: '/home',
         views: {
-          'menuContent': {
-            templateUrl: 'templates/playlist.html',
-            controller: app.controllers.PlaylistController,
+          'content': {
+            templateUrl: 'templates/home.html',
+            controller: app.controllers.HomeController,
             controllerAs: 'ctrl'
           }
         }
       });
       
       // if none of the above states are matched, use this as the fallback
-      $urlRouterProvider.otherwise('/app/home');
+      $urlRouterProvider.otherwise('/app/playlists');
     }
   }
 }
