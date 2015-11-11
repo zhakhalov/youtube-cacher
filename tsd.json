@@ -88,6 +88,12 @@
     },
     "gruntjs/gruntjs.d.ts": {
       "commit": "35989a3ab4834b8e8b2b56788f1d4fc46a25dc8d"
+    },
+    "gapi/gapi.d.ts": {
+      "commit": "785c18f0c897c44ea7fa1a47f3bcb48110658520"
+    },
+    "gapi.youtube/gapi.youtube.d.ts": {
+      "commit": "785c18f0c897c44ea7fa1a47f3bcb48110658520"
     }
   }
 }

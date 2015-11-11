@@ -11,6 +11,7 @@
     "ionic": "1.1.0"
   },
   "dependencies": {
-    "ionic-material": "~0.4.2"
+    "ionic-material": "~0.4.2",
+    "ng-cordova-oauth": "~0.1.4"
   }
 }
