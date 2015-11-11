@@ -3,16 +3,34 @@
 namespace app {
   export class Startup {
     public static $inject: string[] = [
-      '$ionicPlatform'
+      '$ionicPlatform',
+      'youtubePlaylistItems',
+      'angularLoad',
     ];
-    
+
     $ionicPlatform: ionic.platform.IonicPlatformService;
-    
-    constructor ($ionicPlatform: ionic.platform.IonicPlatformService) {
+    youtubePlaylistItems: gapi.client.youtube.playlistItems;
+
+    constructor (
+      $ionicPlatform: ionic.platform.IonicPlatformService,
+      youtubePlaylistItems: gapi.client.youtube.playlistItems,
+      angularLoad: angularLoad.IAngularLoadService
+    ) {
       this.$ionicPlatform = $ionicPlatform;
       this.$ionicPlatform.ready(this.configCordova);
+      this.youtubePlaylistItems = youtubePlaylistItems;
+
+      this.youtubePlaylistItems.list({
+        part: '',
+        playlistId: 'PLCRghUq8yiQtGv9HP5GPqnVj8CwRVPyBZ',
+      })
+      .then((result: any) => {
+        console.log('success', result);
+      }, (result: any) => {
+        console.log('failure', result);
+      });
     }
-    
+
     /**
      * Define Cordova plugins configuration
      */

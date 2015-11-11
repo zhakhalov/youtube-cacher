@@ -6,16 +6,16 @@ namespace app.config {
       '$stateProvider',
       '$urlRouterProvider'
     ];
-    
-    constructor($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) {
-      
+
+    constructor($stateProvider: angular.ui.IStateProvider, $urlRouterProvider: angular.ui.IUrlRouterProvider) {
+
       $stateProvider
       .state('app', {
         url: '/app',
         abstract: true,
         templateUrl: 'templates/menu.html',
         controller: 'app.controllers.ApplicationController as ctrl',
-      })    
+      })
       .state('app.search', {
         url: '/search',
         views: {
@@ -23,7 +23,7 @@ namespace app.config {
             templateUrl: 'templates/search.html'
           }
         }
-      })    
+      })
       .state('app.browse', {
         url: '/browse',
         views: {
@@ -50,12 +50,12 @@ namespace app.config {
           }
         }
       });
-      
+
       // if none of the above states are matched, use this as the fallback
       $urlRouterProvider.otherwise('/app/playlists');
     }
   }
-  
+
   Application.context.config(RouteConfig);
 }
 

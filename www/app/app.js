@@ -12,6 +12,7 @@ var app;
         Application.$inject = [
             'ionic',
             'ionic-material',
+            'angularLoad',
         ];
         Application.__context = angular.module('app', Application.$inject);
         return Application;
@@ -22,9 +23,19 @@ var app;
 var app;
 (function (app) {
     var Startup = (function () {
-        function Startup($ionicPlatform) {
+        function Startup($ionicPlatform, youtubePlaylistItems, angularLoad) {
             this.$ionicPlatform = $ionicPlatform;
             this.$ionicPlatform.ready(this.configCordova);
+            this.youtubePlaylistItems = youtubePlaylistItems;
+            this.youtubePlaylistItems.list({
+                part: '',
+                playlistId: 'PLCRghUq8yiQtGv9HP5GPqnVj8CwRVPyBZ',
+            })
+                .then(function (result) {
+                console.log('success', result);
+            }, function (result) {
+                console.log('failure', result);
+            });
         }
         Startup.prototype.configCordova = function () {
             if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -36,7 +47,9 @@ var app;
             }
         };
         Startup.$inject = [
-            '$ionicPlatform'
+            '$ionicPlatform',
+            'youtubePlaylistItems',
+            'angularLoad',
         ];
         return Startup;
     })();
@@ -205,4 +218,6 @@ var app;
         app.Application.context.controller('app.controllers.PlaylistsController', controllers.PlaylistsController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
+/// <reference path="../../../typings/tsd.d.ts" />
+/// <reference path="angular-load.ts" />
 //# sourceMappingURL=app.js.map
